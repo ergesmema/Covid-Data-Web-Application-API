@@ -7,12 +7,12 @@ Find project report [here](https://drive.google.com/file/d/1ckK2EQjiOAD8NA4g-6gp
 
 ### Dependencies
 
-Java SE 8 or newer (usage of lambdas).
-JSF 2.2
-Primefaces 10.0.0
-Java EE Version 7 Web
-Glassfish 4.1.2
-PostgreSQL 10.0
+Java SE 8 or newer (usage of lambdas) <br />
+JSF 2.2 <br />
+Primefaces 10.0.0 <br />
+Java EE Version 7 Web <br />
+Glassfish 4.1.2 <br />
+PostgreSQL 10.0 <br />
 
 ### Executing program
 
