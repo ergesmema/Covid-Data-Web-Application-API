@@ -1,7 +1,7 @@
 # Covid Data Web Application and SOAP API
 
 The implementation of an API and web application for reading, displaying, filtering, and editing Covid data taken from the repository maintained by Mathieu, Ritchie, Ortiz-Ospina et al. (Mathieu et al, 2021). The project follows a Model-View-Controller (MVC) implementation under Jakarta Server Faces (JSF) framework. <br />
-Find project report [here](https://drive.google.com/file/d/11g_pO8jAKlMfL8W7byl-GIBVfo7C8aDR/view?usp=sharing)
+Find project report [here](https://drive.google.com/file/d/1ckK2EQjiOAD8NA4g-6gp_4Qa34ZMjFi3/view?usp=sharing)
 
 ## Getting Started
 
