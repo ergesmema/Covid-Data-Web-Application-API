@@ -22,7 +22,7 @@ For development purposes and testing the Apache Netbeans IDE was used.
 ![Login](screenshots/login.png "Login")
 ![Profile](screenshots/profile.png "Profile")
 ![Countries](screenshots/countries.png "Countries")
-![Account](screenshots/Account.png "Account")
+![Account](screenshots/account.png "Account")
 
 ## Authors
 
