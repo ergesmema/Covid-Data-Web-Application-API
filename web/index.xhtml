@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Covid Processor</title>
+        <h:outputStylesheet library="css" name="styles.css" />
+
+        <script type="text/javascript">
+    function handleLoginRequest(xhr, status, args) {
+        if(args.validationFailed || !args.loggedIn) {
+            PF('dlg').jq.effect("shake", {times:5}, 100);
+        }
+        else {
+            PF('dlg').hide();
+            $('#loginLink').fadeOut();
+        }
+    }
+</script>
+
+    </h:head>
+    <h:body>  
+       <h:form>        
+    <p:commandButton style="float:right;" value="Login" onclick="PF('dlg').show();">
+    </p:commandButton>
+     
+    <p:growl id="growl" sticky="true" showDetail="false" life="3000" />
+     
+    <p:dialog header="Login" widgetVar="dlg" resizable="false">
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel for="username" value="Username:" />
+            <p:inputText id="username" value="#{loginController.username}" required="true" label="username" />
+             
+            <h:outputLabel for="password" value="Password:" />
+            <p:password id="password" value="#{loginController.password}" required="true" label="password" />
+             
+            <f:facet name="footer">
+                <p:commandButton value="Login" update="growl" action="#{loginController.doLogin}"/>
+            </f:facet>
+        </h:panelGrid>
+    </p:dialog>    
+</h:form>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Covid Data"></h:outputText></h1>
+                <p:dataTable id="covid" style="font-size: 12px;" value="#{covidController.covidList}" var="k"
+                     paginator="true" rows="10"
+                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     rowsPerPageTemplate="5,10,15">
+                    
+                    <p:column headerText="COD" filterBy="#{k.isoCode}" sortBy="#{k.isoCode}" >
+                       <h:outputText value="#{k.isoCode}"/>
+                    </p:column>
+                    
+                    <p:column headerText="LOC" filterBy="#{k.country.location}" sortBy="#{k.country.location}" >
+                       <h:outputText value="#{k.country.location}"/>
+                    </p:column>
+                    
+                    <p:column headerText="CNT" filterBy="#{k.country.continent.continentName}" sortBy="#{k.country.continent.continentName}" >
+                       <h:outputText value="#{k.country.continent.continentName}"/>
+                    </p:column>
+                                      
+                    <p:column headerText="Date" sortBy="#{k.date}" style="width: 100px;" >
+                       <h:outputText value="#{k.date}"/>
+                    </p:column>
+                    
+                    <p:column headerText="TC" sortBy="#{k.totalCases}" >
+                       <h:outputText value="#{k.totalCases}"/>
+                    </p:column>
+                    
+                    <p:column headerText="NC" sortBy="#{k.newCases}" >
+                       <h:outputText value="#{k.newCases}"/>
+                    </p:column>
+                    
+                    <p:column headerText="NCS" sortBy="#{k.newCasesSmoothed}" >
+                       <h:outputText value="#{k.newCasesSmoothed}"/>
+                    </p:column>
+                    
+                    <p:column headerText="TD" sortBy="#{k.totalDeaths}" >
+                       <h:outputText value="#{k.totalDeaths}"/>
+                    </p:column>
+                    
+                    <p:column headerText="ND" sortBy="#{k.newDeaths}" >
+                       <h:outputText value="#{k.newDeaths}"/>
+                    </p:column>
+                   
+                    <p:column headerText="NDS" sortBy="#{k.newDeathsSmoothed}" >
+                       <h:outputText value="#{k.newDeathsSmoothed}"/>
+                    </p:column>
+                    
+                    <p:column headerText="RR" sortBy="#{k.reproductionRate}" >
+                       <h:outputText value="#{k.reproductionRate}"/>
+                    </p:column>
+                    
+                    <p:column headerText="NT" sortBy="#{k.newTests}" >
+                       <h:outputText value="#{k.newTests}"/>
+                    </p:column>
+                    
+                    <p:column headerText="TT" sortBy="#{k.totalTests}" >
+                       <h:outputText value="#{k.totalTests}"/>
+                    </p:column>
+                    
+                    <p:column headerText="SI" sortBy="#{k.stringencyIndex}" >
+                       <h:outputText value="#{k.stringencyIndex}"/>
+                    </p:column>         
+                    
+                    <p:column headerText="NDPC" sortBy="#{k.newDeathsPerCase}" >
+                       <h:outputText value="#{k.newDeathsPerCase}"/>
+                    </p:column>
+                    
+<!--                    <h:column>
+                        <f:facet name="header">UpdateForm</f:facet>
+                        <h:commandButton  action="#{covidController.updateForm(k)}" value="UpdateForm"></h:commandButton>
+                        <br/>
+                        <h:commandButton action="#{covidController.delete(k)}" value="Delete"/>
+                    </h:column>-->
+                </p:dataTable>
+            </h:form>
+            
+        </f:view>
+    </h:body>
+</html>
+
