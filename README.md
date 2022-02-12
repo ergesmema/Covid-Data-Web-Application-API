@@ -12,6 +12,7 @@ JSF 2.2
 Primefaces 10.0.0
 Java EE Version 7 Web
 Glassfish 4.1.2
+PostgreSQL 10.0
 
 ### Executing program
 
